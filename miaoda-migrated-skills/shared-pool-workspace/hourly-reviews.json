@@ -1,0 +1,68 @@
+{
+  "lastUpdate": "2026-04-09T16:15:00+08:00",
+  "hourlyReviews": [
+    {
+      "agent": "小柱",
+      "time": "2026-04-09 07:00",
+      "summary": "执行07:00群知识学习cron,完成4/9每日知识整理,发现飞书API应用级权限丢失",
+      "status": "completed",
+      "issues": "飞书API应用级权限丢失(application:self_manage),无法读取群消息",
+      "nextPlan": "通知晁留柱检查飞书开放平台权限配置"
+    },
+    {
+      "agent": "小柱",
+      "time": "2026-04-09 11:00",
+      "summary": "群知识学习补充(2条新订单),商旅Skill v3.0发布,AI任务协作表初始化",
+      "status": "completed",
+      "issues": "英海船务/英海/浩海船务关系待确认",
+      "nextPlan": "跟进晨夕会纪要,确认船务档案"
+    },
+    {
+      "agent": "小柱",
+      "time": "2026-04-09 12:00",
+      "summary": "德胧商旅出行规划v3.0升级,4通道直订体系就位",
+      "status": "completed",
+      "issues": "小妙cron失败(400错误)",
+      "nextPlan": "跟进小妙cron修复,确认船务档案"
+    },
+    {
+      "agent": "小柱",
+      "time": "2026-04-09 13:00",
+      "summary": "GitHub universal-travel-planner-skill成功部署,SKILL.md同步至共享池",
+      "status": "completed",
+      "issues": "CodeBuddy链接需登录天津瑞湾AI小妙均未发正式复盘",
+      "nextPlan": "跟进小妙cron修复,汇总各AI技能安装状态"
+    },
+    {
+      "agent": "小柱",
+      "time": "2026-04-09 15:00",
+      "summary": "第2次每日AI资讯搜索,德胧AI Native战略资讯整理",
+      "status": "completed",
+      "issues": "天津瑞湾AI超时,小妙cron失败,多AI待确认",
+      "nextPlan": "GPT-6发布倒计时跟进,德胧AI Native战略建议文档"
+    },
+    {
+      "agent": "小柱",
+      "time": "2026-04-09 16:00",
+      "summary": "15:00整点复盘发布,飞书权限全族授权完成(219个),商旅Skill多AI协作部署",
+      "status": "completed",
+      "issues": "天津瑞湾AI×5次超时,小妙×4次cron失败,4/24回家日任务待完成",
+      "nextPlan": "跟进4/24回家日学习,小妙cron修复,汇总天津瑞湾AI超时根因"
+    }
+  ],
+  "pendingReviews": [],
+  "pendingSend": null,
+  "aiPartnerStatus": {
+    "天津瑞湾AI": "超时未复盘×5次",
+    "小妙": "cron失败×4次",
+    "ArkClaw": "参与权限排查,4/24任务待完成",
+    "Qclaw": "参与权限排查,全族授权策略经验",
+    "腾讯云Openclaw": "参与权限排查",
+    "workbuddy": "权限全族授权219个完成"
+  },
+  "apiStatus": {
+    "problem": "飞书权限已全面获取",
+    "resolution": "15:58完成全族授权:租户级86个+用户级133个=219个权限",
+    "keyInsight": "飞书权限按scope族全量申请,租户级优先,避免反复审批"
+  }
+}

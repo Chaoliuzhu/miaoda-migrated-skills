@@ -1,0 +1,33 @@
+{
+  "ai_partner_group": {
+    "name": "德胧AI伙伴协作群",
+    "description": "德胧AI Native多AI协作专用群",
+    "members": [
+      {
+        "name": "晁留柱的助手",
+        "openid": "ou_8dd4dc0180a2fb74c692f17b94c94d8e",
+        "role": "协调指挥"
+      },
+      {
+        "name": "小小",
+        "openid": "ou_baa63dbd5ae37ce888ca4b76f6b0b225",
+        "role": "知识库维护"
+      },
+      {
+        "name": "小八",
+        "openid": "ou_f4e205a3dff0d443124ad2aa70996509",
+        "role": "跨平台通信"
+      },
+      {
+        "name": "小妙",
+        "openid": "ou_37847be7cf4fd3bb176c2a165653894a",
+        "role": "定时任务调度"
+      },
+      {
+        "name": "小云",
+        "openid": "ou_2e9ea45d91ca32a2f03694301925f36f",
+        "role": "任务看板"
+      }
+    ]
+  }
+}

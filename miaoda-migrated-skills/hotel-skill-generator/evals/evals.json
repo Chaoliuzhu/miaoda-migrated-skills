@@ -1,0 +1,147 @@
+{
+  "skill_name": "hotel-skill-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "为'上海金茂君悦大酒店'生成一个酒店Skill，使用德胧品牌体系",
+      "expected_output": "生成完整的skill目录结构，包含SKILL.md、config目录、scripts目录",
+      "files": [],
+      "assertions": [
+        {
+          "text": "SKILL.md存在且frontmatter包含name字段",
+          "type": "format",
+          "check": "name field exists in frontmatter"
+        },
+        {
+          "text": "name字段为hyphen-case格式（全小写+连字符，无大写无下划线）",
+          "type": "format",
+          "check": "name matches ^[a-z0-9-]+$"
+        },
+        {
+          "text": "description长度在50-500字符之间",
+          "type": "format",
+          "check": "50 <= len(description) <= 500"
+        },
+        {
+          "text": "frontmatter包含is_delonix字段且为true",
+          "type": "field",
+          "check": "is_delonix == true"
+        },
+        {
+          "text": "包含##基础信息或类似一级标题",
+          "type": "content",
+          "check": "contains '## 基础信息' or '## 信息' or '## 酒店信息'"
+        },
+        {
+          "text": "包含##立即预订或类似预订入口",
+          "type": "content",
+          "check": "contains '## 立即预订' or '## 预订' or '## 预订入口'"
+        },
+        {
+          "text": "包含百达屋(bidawu.com)预订链接",
+          "type": "content",
+          "check": "contains 'bidawu.com'"
+        },
+        {
+          "text": "description不包含非法字符<或>",
+          "type": "format",
+          "check": "not contains '<' and not contains '>'"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "为'北京王府半岛酒店'生成一个酒店Skill（非德胧独立酒店）",
+      "expected_output": "生成完整的skill目录结构，适配非德胧酒店",
+      "files": [],
+      "assertions": [
+        {
+          "text": "is_delonix字段为false",
+          "type": "field",
+          "check": "is_delonix == false"
+        },
+        {
+          "text": "不包含百达屋(bidawu.com)链接",
+          "type": "content",
+          "check": "not contains 'bidawu.com'"
+        },
+        {
+          "text": "包含酒店官网预订URL",
+          "type": "content",
+          "check": "contains 'https://'"
+        },
+        {
+          "text": "name字段为hyphen-case格式",
+          "type": "format",
+          "check": "name matches ^[a-z0-9-]+$"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "为以下列表批量生成酒店Skills：['广州白天鹅宾馆', '深圳华侨城洲际大酒店', '成都钓鱼台精品酒店']",
+      "expected_output": "为每家酒店生成独立skill目录，共3个",
+      "files": [],
+      "assertions": [
+        {
+          "text": "生成3个或以上独立的skill目录",
+          "type": "structure",
+          "check": "count >= 3 skill directories"
+        },
+        {
+          "text": "每个目录包含SKILL.md",
+          "type": "structure",
+          "check": "each directory has SKILL.md"
+        },
+        {
+          "text": "每个SKILL.md的name唯一且不重复",
+          "type": "content",
+          "check": "all names are unique"
+        },
+        {
+          "text": "每个SKILL.md的description包含对应酒店名称",
+          "type": "content",
+          "check": "each description contains its hotel name"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "检查现有hotel-skill-generator的SKILL.md是否符合规范",
+      "expected_output": "返回格式检查结果，列出合格项和不合格项",
+      "files": [],
+      "assertions": [
+        {
+          "text": "frontmatter包含name和description字段",
+          "type": "field",
+          "check": "name and description fields exist"
+        },
+        {
+          "text": "name格式为hyphen-case",
+          "type": "format",
+          "check": "name matches ^[a-z0-9-]+$"
+        },
+        {
+          "text": "description不包含<或>字符",
+          "type": "format",
+          "check": "not contains '<' and not contains '>'"
+        },
+        {
+          "text": "包含多平台发布相关内容（GitHub/ClawHub/Coze至少一个）",
+          "type": "content",
+          "check": "contains 'GitHub' or 'ClawHub' or 'Coze'"
+        },
+        {
+          "text": "包含德胧酒店适配说明",
+          "type": "content",
+          "check": "contains '百达屋' or '德胧'"
+        },
+        {
+          "text": "包含非德胧酒店适配说明",
+          "type": "content",
+          "check": "contains '官网' or '非德胧' or 'official'"
+        }
+      ]
+    }
+  ]
+}

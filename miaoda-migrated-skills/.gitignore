@@ -1,0 +1,13 @@
+*.md
+testcodex
+scripts/
+.clawhub/
+.github/
+references/
+config/
+reports/
+*.pyc
+__pycache__/
+generated/
+examples/
+NOTES/

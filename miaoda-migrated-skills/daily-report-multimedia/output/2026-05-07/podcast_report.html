@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<title>德胧AI工作日报播客 2026-05-07</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:#0f0f1a;color:#fff;min-height:100vh;padding:20px;}
+.container{max-width:680px;margin:0 auto;}
+.header{text-align:center;margin-bottom:24px;}
+.header h1{font-size:22px;font-weight:700;margin:8px 0 4px;}
+.meta{font-size:14px;color:#a0a0b0;}
+.player-card{background:#1a1a2e;border-radius:16px;padding:24px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.08);}
+.progress-bar{width:100%;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;margin-bottom:16px;cursor:pointer;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#c8102e,#f5a623);border-radius:3px;width:0%;}
+.player-controls{display:flex;align-items:center;gap:16px;}
+.play-btn{width:56px;height:56px;border-radius:50%;background:#c8102e;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.play-btn:hover{background:#a00d24}
+.play-btn.playing{background:#f5a623}
+.time-display{font-size:14px;color:#a0a0b0;}
+.subtitle-section{background:#1a1a2e;border-radius:16px;padding:24px;border:1px solid rgba(255,255,255,0.08);}
+.subtitle-item{padding:12px 16px;border-radius:10px;margin-bottom:6px;font-size:16px;cursor:pointer;color:#a0a0b0;transition:all 0.3s;}
+.subtitle-item:hover{background:rgba(255,255,255,0.05)}
+.subtitle-item.active{background:rgba(200,16,46,0.15);color:#fff;border-left:3px solid #c8102e;}
+.cue{font-size:12px;color:#666;margin-bottom:4px;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px;}
+.stat-card{background:rgba(255,255,255,0.05);border-radius:12px;padding:16px;text-align:center;}
+.stat-card .value{font-size:24px;font-weight:700;color:#f5a623;}
+.stat-card .label{font-size:12px;color:#a0a0b0;margin-top:4px;}
+</style></head><body>
+<div class="container">
+<div class="header"><h1>德胧AI工作日报播客</h1><div class="meta">五月七日</div></div>
+<div class="player-card">
+<div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="player-controls">
+<button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+<span class="time-display"><span id="currentTime">0:00</span> / <span id="totalTime">约21秒</span></span>
+</div></div>
+<div class="subtitle-section">
+<ul class="subtitle-list" id="subtitleList"></ul>
+</div>
+<div class="stats-grid">
+<div class="stat-card"><div class="value">9</div><div class="label">总任务数</div></div>
+<div class="stat-card"><div class="value">2</div><div class="label">P0任务</div></div>
+<div class="stat-card"><div class="value">5</div><div class="label">P1任务</div></div>
+</div></div>
+<audio id="audioPlayer"><source src="data:audio/mp3;base64," type="audio/mpeg"></audio>
+<script>
+const CUES = [{"start": 500, "end": 3500, "text": "德胧AI工作日报，五月七日，天津瑞湾开元名都酒店，各位同事好。"}, {"start": 3700, "end": 6700, "text": "今日核心事件：晨会部署、9项任务下发、AI质检系统调试、边防二团队接待。"}, {"start": 6900, "end": 9900, "text": "今日重点任务共9项，其中P0优先级2项、P1优先级5项、P2优先级2项。"}, {"start": 10100, "end": 13100, "text": "P0级任务：前台SOP流程更新，卫生深度检查。"}, {"start": 13300, "end": 16300, "text": "扣分红线共4条：服务红线一条、质检红线一条、隐私红线一条、品质红线一条，请严格执行。"}, {"start": 16500, "end": 19500, "text": "明日关注：P0 - 前台SOP流程更新（明日10:00）；P0 - 卫生深度检查（明日14:00）；P1 - 收益管理系统上线（明日17:00）。"}, {"start": 19700, "end": 22700, "text": "详细信息请查看飞书文档，感谢各位同事配合，明天见。"}];
+const audio=document.getElementById('audioPlayer');
+const playBtn=document.getElementById('playBtn');
+const progressFill=document.getElementById('progressFill');
+const currentTimeEl=document.getElementById('currentTime');
+const subtitleList=document.getElementById('subtitleList');
+let isPlaying=false,activeIndex=-1;
+function formatTime(ms){const s=Math.floor(ms/1000),m=Math.floor(s/60);return m+':'+(s%60<10?'0':'')+s%60;}
+function initSubtitles(){subtitleList.innerHTML=CUES.map((c,i)=>'<li class="subtitle-item" onclick="seekTo('+c.start+')"><div class="cue">'+formatTime(c.start)+'</div><div>'+c.text+'</div></li>').join('');}
+function togglePlay(){isPlaying?audio.pause():audio.play();isPlaying=!isPlaying;playBtn.classList.toggle('playing',isPlaying);}
+function seekTo(ms){audio.currentTime=ms/1000;}
+audio.addEventListener('timeupdate',()=>{const p=(audio.currentTime/audio.duration)*100;progressFill.style.width=p+'%';currentTimeEl.textContent=formatTime(audio.currentTime*1000);let n=-1;for(let i=0;i<CUES.length;i++)if(audio.currentTime*1000>=CUES[i].start&&audio.currentTime*1000<CUES[i].end){n=i;break;}if(n!==activeIndex){subtitleList.children[activeIndex]?.classList.remove('active');subtitleList.children[n]?.classList.add('active');if(n>=0)subtitleList.children[n].scrollIntoView({behavior:'smooth',block:'center'});activeIndex=n;}});
+document.addEventListener('DOMContentLoaded',initSubtitles);
+</script></body></html>

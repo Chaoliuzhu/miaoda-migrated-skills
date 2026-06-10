@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "skill_name": "hotel-skill-generator",
+  "prompt": "为'北京王府半岛酒店'生成一个酒店 Skill（非德胧独立酒店）",
+  "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0},
+  "expectations": [
+    {"text": "is_delonix字段为false", "passed": true, "evidence": "is_delonix: false"},
+    {"text": "预订入口指向官网而非百达屋", "passed": true, "evidence": "peninsula.com域名"},
+    {"text": "包含独立酒店特色信息", "passed": true, "evidence": "劳斯莱斯接送/管家服务等半岛特色"}
+  ],
+  "timing": {"executor_duration_seconds": 30.0, "grader_duration_seconds": 2.0}
+}

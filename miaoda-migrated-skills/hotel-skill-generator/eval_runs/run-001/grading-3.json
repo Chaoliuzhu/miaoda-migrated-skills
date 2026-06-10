@@ -1,0 +1,12 @@
+{
+  "eval_id": 3,
+  "skill_name": "hotel-skill-generator",
+  "prompt": "为列表批量生成酒店 Skills：['广州白天鹅宾馆','深圳华侨城洲际大酒店','成都钓鱼台精品酒店']",
+  "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0},
+  "expectations": [
+    {"text": "生成3个独立skill目录", "passed": true, "evidence": "guangzhou-whiteswan-hotel/SKILL.md, shenzhen-intercontinental/SKILL.md, chengdu-diaoyutai/SKILL.md 均存在"},
+    {"text": "每个目录包含SKILL.md", "passed": true, "evidence": "3个SKILL.md文件均存在"},
+    {"text": "每个description包含对应酒店名称", "passed": true, "evidence": "各SKILL.md的description均含酒店全称"}
+  ],
+  "timing": {"executor_duration_seconds": 45.0, "grader_duration_seconds": 2.0}
+}

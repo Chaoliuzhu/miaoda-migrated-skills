@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏨 酒店采购比价助手 - Hotel Procurement Price Radar</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .card { background: white; border-radius: 20px; padding: 40px; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-bottom: 10px; font-size: 2em; }
+        .subtitle { color: #666; font-size: 1.1em; margin-bottom: 30px; }
+        .badge { display: inline-block; background: #4CAF50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; margin-right: 10px; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .feature { background: #f8f9fa; padding: 20px; border-radius: 12px; }
+        .feature h3 { color: #667eea; margin-bottom: 10px; }
+        .feature p { color: #666; line-height: 1.6; }
+        .sources { background: #f8f9fa; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .sources h3 { color: #333; margin-bottom: 15px; }
+        .source-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .source-tag { background: #e8e8e8; padding: 8px 15px; border-radius: 20px; font-size: 0.9em; }
+        .source-tag.active { background: #667eea; color: white; }
+        .cta { text-align: center; margin-top: 40px; }
+        .btn { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; margin: 10px; transition: transform 0.2s; }
+        .btn:hover { transform: scale(1.05); }
+        .btn-outline { background: transparent; border: 2px solid #667eea; color: #667eea; }
+        .arch { background: #1a1a2e; color: #eee; padding: 30px; border-radius: 12px; font-family: 'Monaco', 'Consolas', monospace; margin: 20px 0; }
+        .arch code { color: #4CAF50; }
+        .footer { text-align: center; color: rgba(255,255,255,0.8); margin-top: 30px; font-size: 0.9em; }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5em; }
+            .card { padding: 20px; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🏨 酒店采购比价助手</h1>
+            <p class="subtitle">Hotel Procurement Price Radar - AI-Powered Procurement Tool</p>
+            <div style="margin-bottom: 20px;">
+                <span class="badge">MIT开源</span>
+                <span class="badge">免费使用</span>
+                <span class="badge">19个数据源</span>
+            </div>
+            
+            <p style="line-height: 1.8; color: #555;">
+                基于 <strong>OpenClaw + 飞书生态</strong>的酒店采购成本管控工具，通过AI自动查询农产品批发价、电商零售价，帮助财务/采购/厨房快速核价、询比价。<br><br>
+                <strong>一句话：让经验定价、虚假询比价成为历史。</strong>
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>✨ 核心功能</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>🌾 农产品批发价</h3>
+                    <p>农业农村部、新发地、惠农网等9个权威数据源，每日更新</p>
+                </div>
+                <div class="feature">
+                    <h3>🛒 电商价格对比</h3>
+                    <p>淘宝、京东、拼多多实时价格，一键查询</p>
+                </div>
+                <div class="feature">
+                    <h3>📊 多维表格导出</h3>
+                    <p>一键追加到飞书多维表格，历史可查</p>
+                </div>
+                <div class="feature">
+                    <h3>🔄 自动容灾</h3>
+                    <p>主源失败自动切换备用数据源，永不中断</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📡 数据源矩阵</h2>
+            <div class="sources">
+                <h3>🥬 农产品（9个）</h3>
+                <div class="source-grid">
+                    <span class="source-tag active">✅ 农业农村部</span>
+                    <span class="source-tag active">✅ 新发地</span>
+                    <span class="source-tag active">✅ 商务预报</span>
+                    <span class="source-tag active">✅ 寿光指数</span>
+                    <span class="source-tag active">✅ 猪价网</span>
+                    <span class="source-tag">🔜 惠农网</span>
+                    <span class="source-tag">🔜 一亩田</span>
+                </div>
+            </div>
+            <div class="sources">
+                <h3>🛒 电商（4个）</h3>
+                <div class="source-grid">
+                    <span class="source-tag">⏳ 淘宝</span>
+                    <span class="source-tag">⏳ 京东</span>
+                    <span class="source-tag active">✅ 拼多多</span>
+                    <span class="source-tag">⏳ 1688</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🏗️ 系统架构</h2>
+            <div class="arch">
+                <code>用户（任意设备）→ OpenClaw云端引擎 → Web搜索 → 农业农村部/新发地/电商<br>↓<br>智能路由 → 自动选择可用数据源<br>↓<br>兜底机制 → 主源失败自动切换<br>↓<br>飞书多维表格（结果存储）</code>
+            </div>
+            <h3>Web版 vs 本地MCP版</h3>
+            <table style="width:100%; border-collapse: collapse; margin-top: 15px;">
+                <tr style="background:#f8f9fa;"><th style="padding:12px; text-align:left;">功能</th><th style="padding:12px; text-align:center;">Web版✅</th><th style="padding:12px; text-align:center;">本地MCP版</th></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;">价格查询</td><td style="padding:10px; text-align:center;">✅</td><td style="padding:10px; text-align:center;">✅</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;">图片搜索</td><td style="padding:10px; text-align:center;">✅</td><td style="padding:10px; text-align:center;">✅</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;">导出多维表格</td><td style="padding:10px; text-align:center;">✅</td><td style="padding:10px; text-align:center;">✅</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;">自动下单</td><td style="padding:10px; text-align:center;">❌</td><td style="padding:10px; text-align:center;">✅</td></tr>
+                <tr><td style="padding:10px; border-bottom:1px solid #eee;">旺旺聊天</td><td style="padding:10px; text-align:center;">❌</td><td style="padding:10px; text-align:center;">✅</td></tr>
+                <tr><td style="padding:10px;">安装需求</td><td style="padding:10px; text-align:center; color:#4CAF50; font-weight:bold;">无</td><td style="padding:10px; text-align:center;">需要</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>🚀 快速开始</h2>
+            <h3 style="color:#667eea; margin: 15px 0 10px;">方式1：直接使用（推荐）</h3>
+            <p style="background:#f8f9fa; padding:15px; border-radius:8px; font-family:monospace;">
+                在飞书机器人对话框直接说：<br>
+                "查价格"<br>
+                "查一下黄瓜价格"<br>
+                "上传报价单"
+            </p>
+            <h3 style="color:#667eea; margin: 20px 0 10px;">方式2：部署到自己的OpenClaw</h3>
+            <p style="background:#f8f9fa; padding:15px; border-radius:8px; font-family:monospace;">
+                # 克隆到本地<br>
+                cd ~/.openclaw/workspace/skills<br>
+                git clone https://github.com/chaoliuzhu65-tech/hotel-procurement-radar.git
+            </p>
+        </div>
+
+        <div class="cta">
+            <a href="https://github.com/chaoliuzhu65-tech/hotel-procurement-radar" class="btn">📦 查看GitHub源码</a>
+            <a href="https://delonix.feishu.cn/base/ZJ8obBGrSaO9rjsXPvhc1TdYngd" class="btn btn-outline">📊 查看演示多维表格</a>
+        </div>
+    </div>
+    <p class="footer">
+        🦞 由德胧AI龙虾军团维护 | MIT License | 让每一家酒店都能用上AI核价工具
+    </p>
+</body>
+</html>

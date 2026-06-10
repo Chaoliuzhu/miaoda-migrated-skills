@@ -1,0 +1,17 @@
+{
+  "run_id": "run-001",
+  "skill_name": "hotel-skill-generator",
+  "timestamp": "2026-05-18T06:53:00Z",
+  "total_evals": 4,
+  "passed_evals": 4,
+  "failed_evals": 0,
+  "total_expectations": 18,
+  "passed_expectations": 18,
+  "pass_rate": 1.0,
+  "benchmark": [
+    {"eval_id": 1, "pass_rate": 1.0, "passed": 7, "total": 7},
+    {"eval_id": 2, "pass_rate": 1.0, "passed": 3, "total": 3},
+    {"eval_id": 3, "pass_rate": 1.0, "passed": 3, "total": 3},
+    {"eval_id": 4, "pass_rate": 1.0, "passed": 5, "total": 5}
+  ]
+}

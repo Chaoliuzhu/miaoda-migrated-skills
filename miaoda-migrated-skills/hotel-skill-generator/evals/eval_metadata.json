@@ -1,0 +1,52 @@
+{
+  "skill_name": "hotel-skill-generator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "为'上海金茂君悦大酒店'生成一个酒店 Skill，使用德胧品牌体系",
+      "expected_output": "生成完整的 skill 目录结构，包含 SKILL.md、config 目录、scripts 目录",
+      "expectations": [
+        "SKILL.md 存在且 frontmatter 包含 name（上海金茂君悦大酒店 => shanghai-jinmao-junyue）",
+        "name 字段为 hyphen-case 格式（全小写+连字符）",
+        "description 长度在 50-500 字符之间",
+        "包含 ## 基础信息 或类似一级标题（地址、电话、特色服务）",
+        "包含 ## 立即预订 或类似预订入口",
+        "包含百达屋（bidawu.com）预订链接或酒店官网预订链接",
+        "德胧酒店应引导到百达屋 App"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "为'北京王府半岛酒店'生成一个酒店 Skill（非德胧独立酒店）",
+      "expected_output": "生成完整的 skill 目录结构，适配非德胧酒店",
+      "expectations": [
+        "is_delonix 字段为 false 或 official_website 字段指向非德胧官网",
+        "预订入口指向酒店官网（非百达屋）",
+        "SKILL.md 包含独立酒店特色信息（非德胧体系）"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "为以下列表批量生成酒店 Skills：['广州白天鹅宾馆', '深圳华侨城洲际大酒店', '成都钓鱼台精品酒店']",
+      "expected_output": "为每家酒店生成独立 skill 目录，共3个",
+      "expectations": [
+        "生成 3 个独立的 skill 目录",
+        "每个目录包含 SKILL.md",
+        "每个 SKILL.md 的 name 唯一且不重复",
+        "每个 SKILL.md 的 description 包含对应酒店名称"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "检查现有 hotel-skill-generator 的 SKILL.md 是否符合规范",
+      "expected_output": "返回格式检查结果，列出合格项和不合格项",
+      "expectations": [
+        "frontmatter 包含 name 和 description",
+        "name 格式为 hyphen-case",
+        "description 不包含 < 或 > 字符",
+        "包含多平台发布相关内容（GitHub/ClawHub/Coze）",
+        "包含德胧酒店和非德胧酒店的适配说明"
+      ]
+    }
+  ]
+}

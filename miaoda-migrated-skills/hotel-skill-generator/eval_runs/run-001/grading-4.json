@@ -1,0 +1,14 @@
+{
+  "eval_id": 4,
+  "skill_name": "hotel-skill-generator",
+  "prompt": "检查现有 hotel-skill-generator 的 SKILL.md 是否符合规范",
+  "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0},
+  "expectations": [
+    {"text": "frontmatter包含name和description", "passed": true, "evidence": "name: hotel-skill-generator, description完整"},
+    {"text": "name为hyphen-case格式", "passed": true, "evidence": "hotel-skill-generator 全小写"},
+    {"text": "description不含<字符", "passed": true, "evidence": "检查通过"},
+    {"text": "包含多平台发布相关内容", "passed": true, "evidence": "GitHub/ClawHub/Coze三平台"},
+    {"text": "包含德胧和非德胧双适配说明", "passed": true, "evidence": "百达屋核心出口+非德胧官网适配"}
+  ],
+  "timing": {"executor_duration_seconds": 10.0, "grader_duration_seconds": 2.0}
+}

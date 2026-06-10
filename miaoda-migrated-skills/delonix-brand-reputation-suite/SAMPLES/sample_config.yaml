@@ -1,0 +1,61 @@
+# 酒店美誉度管理SUITE — 配置示例
+# 使用前请复制本文件并填写实际参数
+
+# ============ 酒店配置区 ============
+hotel_config:
+  hotel_name: "XX酒店（北京旗舰店）"
+  hotel_code: "BJ"
+  city: "北京"
+  brand: "XX酒店集团"
+  priority: "P0"
+  ctrip_id: "123456"
+  trip_id: "123456"
+  qunar_id: "hotel12345"
+  klook_id: "123456"
+  expedia_id: "EXPD-12345"
+  
+managers:
+  - name: "张三"
+    open_id: "ou_xxxxxxxx"
+    role: "美誉度负责人"
+  - name: "李四"
+    open_id: "ou_yyyyyyyy"
+    role: "客服主管"
+  - name: "王五"
+    open_id: "ou_zzzzzzzz"
+    role: "运营经理"
+
+bitable:
+  app_token: "xxxxxxxxxxxx"
+  table_name: "差评维度层"
+
+cron:
+  daily_report: "30 6 * * *"
+  weekly_report: "0 9 * * 1"
+# ===================================
+
+# 多酒店配置示例
+multi_hotel:
+  - hotel_name: "XX酒店（北京旗舰店）"
+    hotel_code: "BJ"
+    city: "北京"
+    ctrip_id: "123456"
+    managers:
+      - name: "张三"
+        open_id: "ou_xxxxxxxx"
+  
+  - hotel_name: "XX酒店（上海外滩店）"
+    hotel_code: "SH"
+    city: "上海"
+    ctrip_id: "654321"
+    managers:
+      - name: "张四"
+        open_id: "ou_aaaaaaa"
+  
+  - hotel_name: "XX酒店（杭州西湖店）"
+    hotel_code: "HZ"
+    city: "杭州"
+    ctrip_id: "111111"
+    managers:
+      - name: "张五"
+        open_id: "ou_bbbbbbb"

@@ -1,0 +1,16 @@
+{
+  "eval_id": 1,
+  "skill_name": "hotel-skill-generator",
+  "prompt": "为'上海金茂君悦大酒店'生成一个酒店 Skill，使用德胧品牌体系",
+  "summary": {"passed": 7, "failed": 0, "total": 7, "pass_rate": 1.0},
+  "expectations": [
+    {"text": "frontmatter包含name字段", "passed": true, "evidence": "name: shanghai-jinmao-junyue"},
+    {"text": "name为hyphen-case格式", "passed": true, "evidence": "全小写+连字符"},
+    {"text": "description长度50-500字符", "passed": true, "evidence": "约100字符"},
+    {"text": "包含基础信息标题", "passed": true, "evidence": "## 🏨 基础信息"},
+    {"text": "包含预订入口", "passed": true, "evidence": "https://www.hyatt.com/... 存在"},
+    {"text": "非德胧酒店走官网非百达屋", "passed": true, "evidence": "booking_url不含bidawu.com"},
+    {"text": "description不含非法字符<", "passed": true, "evidence": "检查通过"}
+  ],
+  "timing": {"executor_duration_seconds": 30.0, "grader_duration_seconds": 3.0}
+}
